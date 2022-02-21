@@ -1,0 +1,10 @@
+
+  {
+    "SERVER_URL": "https://signalprob-api.herokuapp.com/api/",
+    "THEME_COLORS": {
+      "PRIMARY": "#007bff",
+      "SECONDARY": "#fc3"
+    }
+  }
+
+
