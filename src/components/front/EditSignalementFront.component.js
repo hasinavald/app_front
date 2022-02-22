@@ -102,11 +102,12 @@ function EditSignalementFront(props) {
                 const result = await fetch(configData.SERVER_URL+"signal/clen/seenno?id="+id, requestOptions2);
                 const data = await result.json();
             }
+            await fetchData2();
         }
 
 
         await fetchData();
-        await fetchData2();
+        
         history.push("dashboard-front");
 
     }

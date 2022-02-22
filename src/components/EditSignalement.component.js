@@ -105,24 +105,28 @@ function EditSignalement(props) {
           headers: { 'Content-Type': 'application/json', 'Authorization' : "Bearer "+token},
           body: region
         };
+        if(status == "Terminé"){
+          
+          const requestOptions3 = {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json', 'Authorization' : "Bearer "+token},
+          };
 
-        const requestOptions3 = {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json', 'Authorization' : "Bearer "+token},
-      };
+          const fetchData3= async () => {
+              const result = await fetch(configData.SERVER_URL+"signal/clen/seenno?id="+id, requestOptions3);
+              const data = await result.json();
+          }
+          await fetchData3();
+      }
+        
 
         const fetchData2 = async () => {
             const result = await fetch(configData.SERVER_URL+"signal/updateRegion/"+id, requestOptions2);
         }
 
-        const fetchData3= async () => {
-          const result = await fetch(configData.SERVER_URL+"signal/clen/seenno?id="+id, requestOptions3);
-          const data = await result.json();
-      }
       
         await fetchData();
         await fetchData2();
-        await fetchData3();
         history.push("gerer-signalement");
 
       }
