@@ -106,6 +106,7 @@ function EditSignalementFront(props) {
 
 
         await fetchData();
+        await fetchData2();
         history.push("dashboard-front");
 
     }
