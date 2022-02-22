@@ -106,14 +106,14 @@ function EditSignalement(props) {
           body: region
         };
         if(status == "Terminé"){
-          
+
           const requestOptions3 = {
               method: 'PUT',
               headers: { 'Content-Type': 'application/json', 'Authorization' : "Bearer "+token},
           };
 
           const fetchData3= async () => {
-              const result = await fetch(configData.SERVER_URL+"signal/clen/seenno?id="+id, requestOptions3);
+              const result = await fetch(configData.SERVER_URL+"signal/client/seenno?id="+id, requestOptions3);
               const data = await result.json();
           }
           await fetchData3();

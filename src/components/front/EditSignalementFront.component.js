@@ -99,7 +99,7 @@ function EditSignalementFront(props) {
             };
 
             const fetchData2= async () => {
-                const result = await fetch(configData.SERVER_URL+"signal/clen/seenno?id="+id, requestOptions2);
+                const result = await fetch(configData.SERVER_URL+"signal/client/seenno?id="+id, requestOptions2);
                 const data = await result.json();
             }
             await fetchData2();
