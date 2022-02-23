@@ -63,7 +63,7 @@ function EditTypeSignalement(props) {
         };
 
         const fetchData = async () => {
-            const result = await fetch(configData.SERVER_URL+"api/typesignal/update/"+idType, requestOptions);
+            const result = await fetch(configData.SERVER_URL+"typesignal/update/"+idType, requestOptions);
             const data = await result.json();
         }
       
