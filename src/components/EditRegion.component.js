@@ -61,7 +61,7 @@ function EditRegion(props) {
             body: JSON.stringify({  nomRegion: nomRegion,longitude : longitude,latitude : latitude,id : idRegion , username : username})
             };
         const fetchData = async () => {
-            const result = await fetch("http://localhost:8080/api/region/update?id="+idRegion, requestOptions);
+            const result = await fetch(configData.SERVER_URL+"api/region/update?id="+idRegion, requestOptions);
             const data = await result.json();
             console.log(data);
         }
