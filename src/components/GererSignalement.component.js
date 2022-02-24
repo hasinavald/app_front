@@ -64,7 +64,7 @@ function GererSignalement(props) {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json', 'Authorization' : "Bearer "+token_stored},
       };
-    const userDeleted = await fetch("http://localhost:8080/api/signal/delete/"+data.id, requestOptions2);
+    const userDeleted = await fetch(configData.SERVER_URL+"signal/delete/"+data.id, requestOptions2);
     setReloadDatas(userDeleted)
   }
 
