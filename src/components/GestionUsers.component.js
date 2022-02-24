@@ -126,8 +126,8 @@ function GestionUsers(props) {
                         <td>{value.username}</td>
                         {/* <td>{value.roles[0].name != "ROLE_ADMIN" ? "" : value.nomRegion}</td> */}
                         <td>
-                            <button disabled={value.roles[0].name == "ROLE_ADMIN" ? "disabled" : ""} onClick={() =>Edit(value.username)} className="btn btn-info mr-2">Modifier</button>
-                            <button disabled={value.roles[0].name == "ROLE_ADMIN" ? "disabled" : ""} onClick={()=>Supprimer(value)} className="btn btn-danger">
+                            <button disabled={value.roles[0].name == "ROLE_ADMIN" || value.roles[0].name == "ROLE_USER"  ? "disabled" : ""} onClick={() =>Edit(value.username)} className="btn btn-info mr-2">Modifier</button>
+                            <button disabled={value.roles[0].name == "ROLE_ADMIN" || value.roles[0].name == "ROLE_USER"  ? "disabled" : ""} onClick={()=>Supprimer(value)} className="btn btn-danger">
                               Supprimer</button>
                         </td>
                       </tr>

@@ -153,6 +153,9 @@ function Dashboard(props) {
                       <option selected={(statusFIlter == 'En cours de traitement') ? "selected" : "" }>En cours de traitement</option>
                       <option selected={(statusFIlter == 'Terminé') ? "selected" : "" }>Terminé</option>
                   </select>
+                  <div className="buttonss">
+                  <button onClick={resetFilter.bind(this)}>Reinitialiser</button>
+                  </div>
                 </div>
                 <div className="">
                 {/* <div className="text-right mb-3">
@@ -230,6 +233,12 @@ function Dashboard(props) {
           setReloadDatas(userDeleted)
         }
       
+        function resetFilter(e){
+          setTypeFilter('');
+          setStatusFilter('');
+          setDateFilter('');
+          setListSignals(signalsO)
+        }
 
         function changeFilter(type,val){
           var valuesFilters = val.target.value;
@@ -244,6 +253,8 @@ function Dashboard(props) {
               var typeF = "";
             }
           }
+
+        
 
           if(type == 'date'){
             setDateFilter(valuesFilters);
