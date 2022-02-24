@@ -289,7 +289,7 @@ function Dashboard(props) {
             fetch(configData.SERVER_URL+'signal/'+fileName, requestOptions)
             .then(response => response.blob())
             .then(blob =>{
-              setImg(URL.createObjectURL(blob))
+              return URL.createObjectURL(blob);
             })
   
         }
