@@ -53,7 +53,7 @@ function EditSignalement(props) {
           
           const dataUser = props.signal;
 
-          setRegionSignal(dataUser.region);
+          setRegionSignal(dataUser.nom_Region);
           setDescriptionSignal(dataUser.description);
           setDateSignal(dataUser.date);
           setStatusSignal(dataUser.status);

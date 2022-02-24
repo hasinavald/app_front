@@ -54,7 +54,7 @@ function EditSignalementFront(props) {
                 setLat(parseFloat(dataUser.latitude));
                 setId(parseInt(dataUser.id));
                 setTypeSignal(dataUser.typeSignal[0].type)
-                getImage(dataUser.typeSignal[0].type)
+                getImage(dataUser.image)
             }
 
         }
@@ -116,7 +116,7 @@ function EditSignalementFront(props) {
         setStatusSignal(e.target.value);
     }
 
-    function getImage(fileName){
+      function getImage(fileName){
         const requestOptions = {
           method: 'GET',
           headers: { 'Content-Type': 'application/json', 'Authorization' : "Bearer "+token},
