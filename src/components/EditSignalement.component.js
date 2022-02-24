@@ -28,6 +28,7 @@ function EditSignalement(props) {
       const [long, setLong] = useState(0);
       const [lat, setLat] = useState(0);
       const [listRegion, setListRegion] = useState([]);
+      const [img, setImg] = useState();
       
       let history = useHistory();
       const token = props.isAuth;      
@@ -52,7 +53,7 @@ function EditSignalement(props) {
           
           const dataUser = props.signal;
 
-          setRegionSignal(dataUser.nom_Region);
+          setRegionSignal(dataUser.region);
           setDescriptionSignal(dataUser.description);
           setDateSignal(dataUser.date);
           setStatusSignal(dataUser.status);
@@ -62,7 +63,7 @@ function EditSignalement(props) {
           setLat(parseFloat(dataUser.latitude));
           setId(parseInt(dataUser.id));
           setTypeSignal(dataUser.typeSignal[0].type)
-
+          getImage(dataUser.image)
         }
         
         getDatas();
@@ -124,6 +125,19 @@ function EditSignalement(props) {
         setRegionSignal(e.target.value);
       }
 
+      function getImage(fileName){
+        const requestOptions = {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json', 'Authorization' : "Bearer "+token},
+        };
+          fetch(configData.SERVER_URL+'signal/'+fileName, requestOptions)
+          .then(response => response.blob())
+          .then(blob =>{
+            setImg(URL.createObjectURL(blob))
+          })
+
+      }
+
         return (
             <div className="container container_page">
               <div>
@@ -150,7 +164,7 @@ function EditSignalement(props) {
               </div>
               <div className="row mt-4 mb-4">
                 <div className="col-6">
-                  <img width="100%" src={"data:image/jpeg;base64,"+image} />
+                  <img width="100%" src={img} />
                 </div>
               <div className="col-6">
 

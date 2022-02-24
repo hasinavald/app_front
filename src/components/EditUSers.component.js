@@ -156,7 +156,7 @@ function EditUSers (props) {
                     <option value="">Selectionner un region</option>
                     {listRegion.map((value,index) =>{
                       return(
-                      <option selected={(region == value.nomRegion) ? "selected" : "" } value={value.nomRegion}>{value.nomRegion}</option>
+                      <option key={index} selected={(region == value.nomRegion) ? "selected" : "" } value={value.nomRegion}>{value.nomRegion}</option>
                       )
                     })}
                         

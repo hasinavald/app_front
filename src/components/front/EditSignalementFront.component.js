@@ -26,6 +26,7 @@ function EditSignalementFront(props) {
     const [image, setImage] = useState('');
     const [long, setLong] = useState(0);
     const [lat, setLat] = useState(0);
+    const [img, setImg] = useState(0);
 
 
     const [sen, setSen] = useState(2);
@@ -53,6 +54,7 @@ function EditSignalementFront(props) {
                 setLat(parseFloat(dataUser.latitude));
                 setId(parseInt(dataUser.id));
                 setTypeSignal(dataUser.typeSignal[0].type)
+                getImage(dataUser.typeSignal[0].type)
             }
 
         }
@@ -114,6 +116,19 @@ function EditSignalementFront(props) {
         setStatusSignal(e.target.value);
     }
 
+    function getImage(fileName){
+        const requestOptions = {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json', 'Authorization' : "Bearer "+token},
+        };
+          fetch(configData.SERVER_URL+'signal/'+fileName, requestOptions)
+          .then(response => response.blob())
+          .then(blob =>{
+            setImg(URL.createObjectURL(blob))
+          })
+
+      }
+
 
     return (
         <div className="container container_page">
@@ -131,7 +146,7 @@ function EditSignalementFront(props) {
 
             <div className="gridRow">
                 <div className="img_container_signal">
-                    <img width="100%" src={"data:image/jpeg;base64,"+image} />
+                    <img width="100%" src={img} />
                 </div>
                 <div className="blackBoardCOntainer">
 
