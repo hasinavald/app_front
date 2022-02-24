@@ -91,7 +91,7 @@ function Dashboard(props) {
         }} key={signal.id} icon={getIcons(signal.typeSignal[0].couleur)}  position={[signal.latitude,signal.longitude]}>
           <Tooltip>
             <div>
-              <img width="100%" src={"data:image/jpeg;base64,"+signal.image} />
+              <img width="100%" src={getImage.bind(this,signal.image)} />
             </div>
             <div className="description">
               {signal.description}
@@ -281,7 +281,18 @@ function Dashboard(props) {
           var resultatFiltre = executeFilter(typeF,dateF,statuse);
           setListSignals(resultatFiltre);
         }
-
+        function getImage(e,fileName){
+          const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json', 'Authorization' : "Bearer "+token},
+          };
+            fetch(configData.SERVER_URL+'signal/'+fileName, requestOptions)
+            .then(response => response.blob())
+            .then(blob =>{
+              setImg(URL.createObjectURL(blob))
+            })
+  
+        }
         function executeFilter(type,dateF,statuse){
           if(signalsO.length !=0 && signalsO && !signalsO.message){
             var copyList = [...signalsO];
